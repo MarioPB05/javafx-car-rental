@@ -4,11 +4,13 @@ import controller.ControllerInterface;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Objects;
 
 public class Utils {
 
@@ -102,19 +104,27 @@ public class Utils {
      * @param currentController Controlador actual.
      */
     public static void openWindow(WindowType windowType, ControllerInterface currentController) {
+        warningLogger("Abriendo ventana: " + windowType.getTitle());
+
         try {
             FXMLLoader loader = getFXMLLoader(windowType);
             Parent root = loader.load();
 
             ControllerInterface controller = loader.getController();
+            Image icon = new Image(Objects.requireNonNull(Utils.class.getResourceAsStream("/images/app-icon.png")));
 
-            Scene scene = new Scene(root);
+            Scene scene = new Scene(root, 1280, 720);
             Stage stage = new Stage();
 
             stage.setScene(scene);
+            stage.setResizable(false);
+            stage.getIcons().add(icon);
+            stage.setTitle(windowType.getTitle());
+            stage.setOnCloseRequest(e -> controller.closeWindows());
+
             stage.show();
 
-            stage.setOnCloseRequest(e -> controller.closeWindows());
+            infoLogger("Ventana abierta correctamente.");
 
             Stage myStage = currentController.getStage();
 
