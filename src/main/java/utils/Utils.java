@@ -66,24 +66,34 @@ public class Utils {
      * Enumerado con los tipos de ventana disponibles.
      */
     public enum WindowType {
-        HOME, REGISTER, LIST
+        HOME("Gestión de Vehículos", "/views/home.fxml"),
+        REGISTER("Registro de Vehículos", "/views/register.fxml"),
+        LIST("Listado de Vehículos", "/views/list.fxml");
+
+        private final String title;
+        private final String path;
+
+        WindowType(String title, String path) {
+            this.title = title;
+            this.path = path;
+        }
+
+        public String getTitle() {
+            return title;
+        }
+
+        public String getPath() {
+            return path;
+        }
     }
 
     /**
      * Devuelve el FXMLLoader correspondiente al tipo de ventana solicitado.
      * @param windowType Tipo de ventana solicitado.
      * @return FXMLLoader correspondiente al tipo de ventana solicitado.
-     * @throws IllegalArgumentException Si no se ha encontrado la ventana solicitada.
      */
-    private static FXMLLoader getFXMLLoader(WindowType windowType) throws IllegalArgumentException {
-        String path = switch (windowType) {
-            case HOME -> "/views/home.fxml";
-            case REGISTER -> "/views/register.fxml";
-            case LIST -> "/views/list.fxml";
-            default -> throw new IllegalArgumentException("No se ha encontrado la ventana solicitada.");
-        };
-
-        return new FXMLLoader(Utils.class.getResource(path));
+    private static FXMLLoader getFXMLLoader(WindowType windowType) {
+        return new FXMLLoader(Utils.class.getResource(windowType.getPath()));
     }
 
     /**
@@ -113,7 +123,7 @@ public class Utils {
             }
 
             myStage.close();
-        }catch (IOException | IllegalArgumentException | NullPointerException e) {
+        }catch (IOException | NullPointerException e) {
             Utils.errorLogger(e.getMessage());
         }
     }
