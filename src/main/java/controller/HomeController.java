@@ -11,7 +11,7 @@ public class HomeController implements ControllerInterface {
 
     @FXML
     private void openRegisterWindow() {
-        Utils.openWindow(Utils.WindowType.HOME, this);
+        Utils.openWindow(Utils.WindowType.REGISTER, this);
     }
 
     @Override
