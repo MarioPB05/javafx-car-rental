@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
+import utils.Utils;
 
 import java.io.IOException;
 import java.util.Objects;
@@ -22,11 +23,15 @@ public class HomeApp  extends Application {
         stage.setResizable(false);
         stage.getIcons().add(icon);
         stage.setTitle("Gestión de Vehículos");
+        stage.setOnCloseRequest(e -> Utils.infoLogger("Cerrando la aplicación..."));
 
         stage.show();
+
+        Utils.infoLogger("Aplicación iniciada correctamente.");
     }
 
     public static void main(String[] args) {
+        Utils.initMessage();
         launch(args);
     }
 
