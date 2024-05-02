@@ -52,7 +52,7 @@
 .custom-combo-box .list-cell {
     -fx-background-color: white;
     -fx-font-size: 14px;
-    -fx-font-family: 'Arial';
+    -fx-alignment: center;
 }
 
 .custom-combo-box .list-cell:hover {
@@ -62,5 +62,9 @@
 
 .custom-combo-box .list-cell:filled:selected {
     -fx-background-color: white;
+    -fx-text-fill: black;
 }
 
+.custom-combo-box .list-view .list-cell:selected .text {
+    -fx-fill: #007bff; /* Cambia el color de texto solo cuando está seleccionado en el desplegable */
+}
