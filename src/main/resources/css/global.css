@@ -27,3 +27,40 @@
     -fx-background-color: #545b62;
     -fx-border-color: #4e555b;
 }
+
+.combo-box {
+    -fx-background-color: #007bff;
+    -fx-border-color: #007bff;
+    -fx-border-width: 2px;
+    -fx-border-radius: 4px;
+    -fx-text-fill: black;
+    -fx-font-weight: bold;
+}
+
+.custom-combo-box .arrow-button {
+    -fx-padding: 0px 8px;
+}
+
+.custom-combo-box .arrow-button .arrow {
+    -fx-background-color: white; /* Cambia el color de la flecha a blanco */
+}
+
+.custom-combo-box:hover, .custom-combo-box:focused {
+    -fx-border-color: #007bff;
+}
+
+.custom-combo-box .list-cell {
+    -fx-background-color: white;
+    -fx-font-size: 14px;
+    -fx-font-family: 'Arial';
+}
+
+.custom-combo-box .list-cell:hover {
+    -fx-background-color: #007bff;
+    -fx-text-fill: white;
+}
+
+.custom-combo-box .list-cell:filled:selected {
+    -fx-background-color: white;
+}
+
