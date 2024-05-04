@@ -196,6 +196,11 @@ public class RegisterController implements ControllerInterface {
         try {
             Service service = new Service(0, selectedCar, selectedClient, selectedStartDate, selectedEndDate, total);
 
+            if (!service.checkAvailability()) {
+                Utils.showAlert("Error", "El vehículo no está disponible en las fechas seleccionadas.", Alert.AlertType.ERROR);
+                return;
+            }
+
             if (service.save()) {
                 Utils.showAlert("Alquiler guardado", "El alquiler se ha guardado correctamente.", Alert.AlertType.INFORMATION);
                 closeWindow();
