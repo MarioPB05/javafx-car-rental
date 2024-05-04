@@ -70,6 +70,30 @@ public class Car {
         return cars;
     }
 
+    public static Car getCar(String plate) throws SQLException {
+        ConexionDB database = Utils.getDatabaseConnection();
+
+        database.ejecutarConsulta("SELECT * FROM vehiculos WHERE matricula = '" + plate + "'");
+
+        ResultSet result = database.getResultSet();
+
+        Car car = null;
+
+        if (result.next()) {
+            car = new Car(
+                    result.getInt("kilometros"),
+                    result.getInt("precio"),
+                    result.getString("marca"),
+                    result.getString("matricula"),
+                    result.getString("descripcion")
+            );
+        }
+
+        database.cerrarConexion();
+
+        return car;
+    }
+
     @Override
     public String toString() {
         return plate;
