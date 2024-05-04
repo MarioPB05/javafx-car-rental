@@ -54,7 +54,7 @@
                     <Font size="16.0" />
                 </font>
             </Button>
-            <Button mnemonicParsing="false" styleClass="button-secondary" text="Consultar Alquileres">
+            <Button onMouseClicked="#openListWindow" mnemonicParsing="false" styleClass="button-secondary" text="Consultar Alquileres">
                 <font>
                     <Font size="16.0" />
                 </font>
