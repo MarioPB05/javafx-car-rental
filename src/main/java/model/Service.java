@@ -29,6 +29,26 @@ public class Service {
         return "Service " + id;
     }
 
+    public Boolean checkAvailability() {
+        try {
+            ConexionDB database = Utils.getDatabaseConnection();
+            String query = "SELECT * FROM servicios WHERE matricula_vehiculo = '" + car.getPlate() + "' AND fecha_entrega >= '" + startDate + "' AND fecha_alquiler <= '" + endDate + "'";
+            database.ejecutarConsulta(query);
+
+            if (database.getResultSet().next()) {
+                Utils.errorLogger("El vehículo no está disponible en las fechas seleccionadas.");
+                return false;
+            }
+
+            database.cerrarConexion();
+
+            return true;
+        } catch (SQLException e) {
+            Utils.errorLogger(e.getMessage());
+            return false;
+        }
+    }
+
     public Boolean save() {
         try {
             ConexionDB database = Utils.getDatabaseConnection();
