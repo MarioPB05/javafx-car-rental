@@ -6,6 +6,6 @@ public interface ControllerInterface {
 
     Stage getStage();
 
-    void closeWindows();
+    void closeWindow();
 
 }
