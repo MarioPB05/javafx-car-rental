@@ -14,6 +14,11 @@ public class HomeController implements ControllerInterface {
         Utils.openWindow(Utils.WindowType.REGISTER, this);
     }
 
+    @FXML
+    public void openListWindow() {
+        Utils.openWindow(Utils.WindowType.LIST, this);
+    }
+
     @Override
     public Stage getStage() {
         return (Stage) btnRegister.getScene().getWindow();
