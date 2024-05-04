@@ -9,4 +9,5 @@ module mpb.control_de_personas {
 
     exports apps;
     exports controller;
+    exports model;
 }
