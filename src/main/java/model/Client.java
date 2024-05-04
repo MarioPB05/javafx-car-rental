@@ -63,6 +63,21 @@ public class Client {
         return clients;
     }
 
+    public static Client getClient(String NIF) throws SQLException {
+        ConexionDB database = Utils.getDatabaseConnection();
+        database.ejecutarConsulta("SELECT * FROM clientes WHERE NIF = '" + NIF + "'");
+        ResultSet result = database.getResultSet();
+        result.next();
+        Client client = new Client(
+                result.getString("NIF"),
+                result.getString("Poblacion"),
+                result.getString("Direcion"),
+                result.getString("NyA")
+        );
+        database.cerrarConexion();
+        return client;
+    }
+
     @Override
     public String toString() {
         return fullName;
