@@ -135,7 +135,7 @@ public class Utils {
             stage.setResizable(false);
             stage.getIcons().add(icon);
             stage.setTitle(windowType.getTitle());
-            stage.setOnCloseRequest(e -> controller.closeWindows());
+            stage.setOnCloseRequest(e -> controller.closeWindow());
 
             stage.show();
 
