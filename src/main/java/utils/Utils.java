@@ -4,6 +4,7 @@ import controller.ControllerInterface;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
@@ -62,6 +63,20 @@ public class Utils {
      */
     public static void errorLogger(String message) {
         System.out.println(getTimestamp() + ConsoleColors.RED + "[ERROR] " + message + ConsoleColors.RESET);
+    }
+
+    public static void showAlert(String title, String message, Alert.AlertType type) {
+        Alert alert = new Alert(type);
+        alert.setHeaderText(null);
+        alert.setTitle(title);
+        alert.setContentText(message);
+
+        // Obtener la ventana del Alert
+        Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+
+        // Agregar un icono al Alert
+        stage.getIcons().add(new Image(Objects.requireNonNull(Utils.class.getResourceAsStream("/images/app-icon.png"))));
+        alert.showAndWait();
     }
 
     /**
