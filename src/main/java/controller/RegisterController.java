@@ -203,7 +203,7 @@ public class RegisterController implements ControllerInterface {
 
             if (service.save()) {
                 Utils.showAlert("Alquiler guardado", "El alquiler se ha guardado correctamente.", Alert.AlertType.INFORMATION);
-                closeWindow();
+                Utils.openWindow(Utils.WindowType.LIST, this);
             } else {
                 Utils.showAlert("Error al guardar", "No se ha podido guardar el alquiler.", Alert.AlertType.ERROR);
             }
