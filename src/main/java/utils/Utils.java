@@ -153,4 +153,8 @@ public class Utils {
         }
     }
 
+    public static ConexionDB getDatabaseConnection() {
+        return new ConexionDB("jdbc:mariadb://localhost/rent_car_db", "root", "1234");
+    }
+
 }
