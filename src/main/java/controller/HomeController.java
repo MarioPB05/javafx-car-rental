@@ -20,7 +20,7 @@ public class HomeController implements ControllerInterface {
     }
 
     @Override
-    public void closeWindows() {
+    public void closeWindow() {
         // Al cerrar la ventana de inicio, no se realiza ninguna acción. Se cierra la aplicación.
     }
 
